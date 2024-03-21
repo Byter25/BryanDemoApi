@@ -1,0 +1,50 @@
+<div class="tabla">
+  <table>
+    <thead>
+      <tr>
+        <th *ngFor="let c of campos">{{ c.toUpperCase() }}</th>
+        <th>ACCIONES</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data">
+        <td *ngFor="let c of campos">
+          {{ item[c] }}
+        </td>
+        <td>
+          <button class="btnEditar" (click)="editar(item)">EDITAR</button>
+          <button class="btnEliminar" (click)="eliminar(item)">ELIMINAR</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<button class="btnAgregar" (click)="agregar()">AGREGAR</button>
+@if (formActualizar) {
+<app-form
+  [tabla]="tabla"
+  [camposTipo]="camposTipos"
+  [data]="dataUnic"
+  [accion]="'actualizar'"
+  (saliry)="formActualizar = $event"
+></app-form>
+} @if (formAgregar) {
+<app-form
+  [tabla]="tabla"
+  [camposTipo]="camposTipos"
+  [data]="dataUnic"
+  [accion]="'guardar'"
+  (saliry)="formAgregar = $event"
+></app-form>
+} @if (modalEliminar) {
+<div class="mEliminar">
+  <div>
+    @for (c of campos; track $index) {
+    <span>{{ c }}:</span>
+    <span>{{ dataUnic[c] }}</span>
+    }
+    <button class="btnNo" (click)="modalEliminar = false">NO</button>
+    <button class="btnSi" (click)="confirmDelete()">SI</button>
+  </div>
+</div>
+}

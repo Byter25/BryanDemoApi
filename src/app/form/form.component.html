@@ -1,0 +1,10 @@
+<div class="fondo">
+  <form [formGroup]="formDynamic" (ngSubmit)="submitForm()">
+    @for(c of camposTipo;track c){
+    <label [for]="c.nombre">{{ c.nombre.toUpperCase() }}</label>
+    <input [type]="c.tipo" [formControlName]="c.nombre" [id]="c.nombre" />
+    }
+    <button (click)="salir()">SALIR</button>
+    <button type="submit">{{ accion.toUpperCase() }}</button>
+  </form>
+</div>
