@@ -1,16 +1,23 @@
 <div class="tabla">
   <table>
+    <!-- Cabecera de la tabla -->
     <thead>
       <tr>
+        <!-- Se itera sobre el arreglo 'campos' y se muestra cada elemento en mayúsculas como un encabezado de columna -->
         <th *ngFor="let c of campos">{{ c.toUpperCase() }}</th>
+        <!-- Columna adicional para las acciones que se pueden realizar sobre cada fila -->
         <th>ACCIONES</th>
       </tr>
     </thead>
+    <!-- Cuerpo de la tabla -->
     <tbody>
+      <!-- Se itera sobre el arreglo 'data', donde cada 'item' representa una fila de datos -->
       <tr *ngFor="let item of data">
+        <!-- Se itera nuevamente sobre 'campos' para mostrar el valor correspondiente de 'item' en cada celda -->
         <td *ngFor="let c of campos">
           {{ item[c] }}
         </td>
+        <!-- Se añaden botones para editar y eliminar el 'item' actual, invocando las funciones 'editar' y 'eliminar' respectivamente -->
         <td>
           <button class="btnEditar" (click)="editar(item)">EDITAR</button>
           <button class="btnEliminar" (click)="eliminar(item)">ELIMINAR</button>
@@ -19,7 +26,12 @@
     </tbody>
   </table>
 </div>
+
+<!-- Botón para agregar un nuevo registro -->
 <button class="btnAgregar" (click)="agregar()">AGREGAR</button>
+
+<!-- Condicionales para mostrar formularios y modales según el estado de las variables -->
+<!-- Si 'formActualizar' es verdadero, muestra el formulario de actualización -->
 @if (formActualizar) {
 <app-form
   [tabla]="tabla"
@@ -28,7 +40,9 @@
   [accion]="'actualizar'"
   (saliry)="formActualizar = $event"
 ></app-form>
-} @if (formAgregar) {
+}
+<!-- Si 'formAgregar' es verdadero, muestra el formulario de agregar -->
+@if (formAgregar) {
 <app-form
   [tabla]="tabla"
   [camposTipo]="camposTipos"
@@ -36,13 +50,18 @@
   [accion]="'guardar'"
   (saliry)="formAgregar = $event"
 ></app-form>
-} @if (modalEliminar) {
+}
+
+<!-- Si 'modalEliminar' es verdadero, muestra el modal de confirmación de eliminación -->
+@if (modalEliminar) {
 <div class="mEliminar">
   <div>
+    <!-- Itera sobre el arreglo 'campos' y muestra el valor de 'dataUnic' para cada campo -->
     @for (c of campos; track $index) {
     <span>{{ c }}:</span>
     <span>{{ dataUnic[c] }}</span>
     }
+    <!-- Botones para cancelar o confirmar la eliminación -->
     <button class="btnNo" (click)="modalEliminar = false">NO</button>
     <button class="btnSi" (click)="confirmDelete()">SI</button>
   </div>

@@ -1,10 +1,13 @@
 <div class="fondo">
+  <!-- Se define el formulario con un grupo de formularios dinámico y se maneja el evento de envío -->
   <form [formGroup]="formDynamic" (ngSubmit)="submitForm()">
+    <!-- Se itera sobre el arreglo 'camposTipo' para crear los campos del formulario -->
     @for(c of camposTipo;track c){
     <label [for]="c.nombre">{{ c.nombre.toUpperCase() }}</label>
     <input [type]="c.tipo" [formControlName]="c.nombre" [id]="c.nombre" />
     }
     <button (click)="salir()">SALIR</button>
+    <!-- Botón para enviar el formulario, muestra el texto de la acción en mayúsculas -->
     <button type="submit">{{ accion.toUpperCase() }}</button>
   </form>
 </div>

@@ -1,8 +1,12 @@
+<!-- Contenedor principal para la sección de visualización de tablas -->
 <div class="contenedor">
+  <!-- Sección de opciones que contiene un menú desplegable para seleccionar una tabla -->
   <div class="opciones">
+    <!-- Etiqueta para el menú desplegable -->
     <label for="tablas">VER TABLA</label>
-    <select name="tablas" id="tablas" (change)="this.llenarData($event)">
-      <option value="Cliente">Clientes</option>
+    <!-- Menú desplegable con opciones que representan diferentes tablas de datos -->
+    <select name="tablas" id="tablas" (change)="obtenerData($event)">
+      <!-- Cada opción representa una tabla diferente -->
       <option value="Tecnico">Tecnicos</option>
       <option value="Empresa" selected>Empresas</option>
       <option value="Conocimiento">Conocimientos</option>
@@ -12,6 +16,7 @@
     </select>
   </div>
 
+  <!-- Estructura de control 'switch' para mostrar diferentes componentes basados en la tabla seleccionada -->
   @switch (nomTabla) { @case ("Cliente") {
   <app-tablas [tabla]="nomTabla" [data]="data" [campos]="['id', 'nombre']" />
 
