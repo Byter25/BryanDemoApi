@@ -11,17 +11,20 @@
 }
 
 .fondo form {
-  border-radius: 5px;
+  border-radius: 25px;
   display: grid;
-  gap: 5px;
-  grid-template-columns: 1fr 1fr;
+  gap:20px;
+  grid-template-columns: repeat(2;1fr);
   background-color: #2d253d;
-  padding: 1rem;
+  padding: 30px;
 }
 .fondo form label {
+  text-align:right;
+  padding: 5px 10px;
   grid-column: 1;
 }
 .fondo form input {
+  padding: 5px 10px;
   grid-column: 2;
 }
 button {

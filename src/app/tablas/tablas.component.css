@@ -36,6 +36,7 @@ th,td{
   padding:10px 20px;
 }
 
+
 .btnEditar{
   background-color:purple;
 }
@@ -67,9 +68,14 @@ th,td{
 .mEliminar div{
   display:grid;
   padding:1rem;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   background-color: #2f2b46;
 }
 .mEliminar div span{
   padding: 10px 20px;
+}
+.mEliminar p {
+  padding:20px;
+  text-align:center;
+  grid-column: span 2; /* Se extiende a través de dos columnas */
 }
